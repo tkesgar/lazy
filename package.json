@@ -1,0 +1,24 @@
+{
+  "name": "@tkesgar/lazy",
+  "description": "Run a function lazily",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "files": [
+    "./dist/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-c8": "^0.29.8",
+    "typescript": "^5.0.3",
+    "vitest": "^0.29.8"
+  }
+}
