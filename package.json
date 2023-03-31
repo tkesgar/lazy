@@ -1,7 +1,16 @@
 {
   "name": "@tkesgar/lazy",
   "description": "Run a function lazily",
+  "keywords": [
+    "lazy"
+  ],
   "version": "1.0.1",
+  "author": {
+    "name": "Ted Kesgar",
+    "url": "https://www.tkesgar.space",
+    "email": "t.kesgar@outlook.com"
+  },
+  "license": "MIT",
   "type": "module",
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -17,9 +26,6 @@
     "prepare": "husky install",
     "prepack": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.8",
     "del-cli": "^5.0.0",
