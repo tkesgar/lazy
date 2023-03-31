@@ -1,7 +1,7 @@
 {
   "name": "@tkesgar/lazy",
   "description": "Run a function lazily",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
