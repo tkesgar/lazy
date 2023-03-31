@@ -20,8 +20,8 @@ export class Lazy<T> {
 }
 
 export function lazify<T>(fn: () => T) {
-  const lazy = new Lazy(fn)
-  return () => lazy.value
+  const lazy = new Lazy(fn);
+  return () => lazy.value;
 }
 
 export class LazyAsync<T> {
@@ -59,6 +59,6 @@ export class LazyAsync<T> {
 }
 
 export function lazifyAsync<T>(fn: () => Promise<T>) {
-  const lazy = new LazyAsync(fn)
-  return () => lazy.getValue()
+  const lazy = new LazyAsync(fn);
+  return () => lazy.getValue();
 }

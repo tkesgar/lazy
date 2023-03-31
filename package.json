@@ -11,8 +11,10 @@
   "scripts": {
     "clean": "del-cli 'dist/**'",
     "build": "npm run clean && tsc",
+    "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "prepare": "husky install",
     "prepack": "npm run build"
   },
   "keywords": [],
@@ -21,6 +23,10 @@
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.8",
     "del-cli": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "2.8.7",
+    "prettier-plugin-organize-imports": "^3.2.2",
     "typescript": "^5.0.3",
     "vitest": "^0.29.8"
   }
