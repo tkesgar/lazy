@@ -1,11 +1,11 @@
-name: CI
+name: Code coverage
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
 jobs:
-  test:
+  test-coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
