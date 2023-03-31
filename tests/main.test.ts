@@ -1,6 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 import { Lazy, LazyAsync } from "../src/main";
 
+function nextTick(): Promise<void> {
+  return new Promise(resolve => process.nextTick(resolve))
+}
+
 describe.concurrent("Lazy", () => {
   it("should not call fn initially", () => {
     const fn = vi.fn(() => "foo");
@@ -61,7 +65,10 @@ describe.concurrent("Lazy", () => {
 
 describe.concurrent("LazyAsync", () => {
   it("should not call fn initially", () => {
-    const fn = vi.fn(async () => "foo");
+    const fn = vi.fn(async () => {
+      await nextTick()
+      return "foo"
+    });
 
     new LazyAsync(fn);
 
@@ -69,7 +76,10 @@ describe.concurrent("LazyAsync", () => {
   });
 
   it("should call fn when value is get", async () => {
-    const fn = vi.fn(async () => "foo");
+    const fn = vi.fn(async () => {
+      await nextTick()
+      return "foo"
+    });
 
     const lazy = new LazyAsync(fn);
 
@@ -79,7 +89,10 @@ describe.concurrent("LazyAsync", () => {
   });
 
   it("should only call fn once when value is get multiple times", async () => {
-    const fn = vi.fn(async () => "foo");
+    const fn = vi.fn(async () => {
+      await nextTick()
+      return "foo"
+    });
 
     const lazy = new LazyAsync(fn);
 
@@ -91,7 +104,10 @@ describe.concurrent("LazyAsync", () => {
   });
 
   it("should only call fn once when value is get multiple times synchronously", async () => {
-    const fn = vi.fn(async () => "foo");
+    const fn = vi.fn(async () => {
+      await nextTick()
+      return "foo"
+    });
 
     const lazy = new LazyAsync(fn);
 
@@ -109,6 +125,7 @@ describe.concurrent("LazyAsync", () => {
 
   it("should throw error when fn throws error", async () => {
     const fn = vi.fn(async () => {
+      await nextTick()
       throw new Error("Oh noes!");
     });
 
@@ -121,6 +138,7 @@ describe.concurrent("LazyAsync", () => {
 
   it("should call fn multiple times and throw error when fn throws error and getValue() is called", async () => {
     const fn = vi.fn(async () => {
+      await nextTick()
       throw new Error("Oh noes!");
     });
 
@@ -135,6 +153,7 @@ describe.concurrent("LazyAsync", () => {
 
   it("should call fn once and throw error when fn throws error and getValue() is called synchronously", async () => {
     const fn = vi.fn(async () => {
+      await nextTick()
       throw new Error("Oh noes!");
     });
 
@@ -153,7 +172,10 @@ describe.concurrent("LazyAsync", () => {
   });
 
   it("should return value if .value is get and value has been initialized", async () => {
-    const fn = vi.fn(async () => "bar");
+    const fn = vi.fn(async () => {
+      await nextTick()
+      return "bar"
+    });
 
     const lazy = new LazyAsync(fn);
 
@@ -169,7 +191,10 @@ describe.concurrent("LazyAsync", () => {
   });
 
   it("should throw error if .value is get and value has not been initialized", () => {
-    const fn = vi.fn(async () => "bar");
+    const fn = vi.fn(async () => {
+      await nextTick()
+      return "bar"
+    });
 
     const lazy = new LazyAsync(fn);
 
